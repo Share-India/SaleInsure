@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c6c6cd",
+                      "error-container": "#ffdad6",
+                      "outline": "#76777d",
+                      "on-tertiary-fixed": "#07006c",
+                      "surface-dim": "#d8dadc",
+                      "surface-variant": "#e0e3e5",
+                      "tertiary-fixed": "#e1e0ff",
+                      "secondary-fixed-dim": "#b9c7e0",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary-fixed": "#d5e3fd",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-tint": "#565e74",
+                      "tertiary-container": "#07006c",
+                      "on-primary-container": "#7c839b",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#131b2e",
+                      "secondary": "#515f74",
+                      "primary-container": "#131b2e",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "surface-container-high": "#e6e8ea",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#f7f9fb",
+                      "inverse-primary": "#bec6e0",
+                      "primary-fixed-dim": "#bec6e0",
+                      "background": "#f7f9fb",
+                      "primary-fixed": "#dae2fd",
+                      "on-surface": "#191c1e",
+                      "on-secondary-container": "#57657b",
+                      "secondary-container": "#d5e3fd",
+                      "surface": "#f7f9fb",
+                      "tertiary": "#000000",
+                      "primary": "#000000",
+                      "surface-container": "#eceef0",
+                      "inverse-surface": "#2d3133",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed-variant": "#3a485c",
+                      "on-tertiary-container": "#7073ff",
+                      "on-error": "#ffffff",
+                      "on-background": "#191c1e",
+                      "on-secondary-fixed": "#0d1c2f",
+                      "on-tertiary-fixed-variant": "#2f2ebe",
+                      "error": "#ba1a1a",
+                      "on-surface-variant": "#45464d",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#c0c1ff",
+                      "on-secondary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "stack-md": "16px",
+                      "stack-sm": "8px",
+                      "margin-page": "40px",
+                      "gutter": "24px",
+                      "stack-lg": "24px",
+                      "container-padding": "32px"
+              },
+              "fontFamily": {
+                      "h3": ["Manrope"],
+                      "h1": ["Manrope"],
+                      "body-sm": ["Manrope"],
+                      "data-tabular": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "label-caps": ["Manrope"],
+                      "h2": ["Manrope"],
+                      "body-md": ["Manrope"]
+              },
+              "fontSize": {
+                      "h3": ["24px", {"lineHeight": "1.3", "letterSpacing": "0em", "fontWeight": "600"}],
+                      "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "data-tabular": ["14px", {"lineHeight": "1", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.08em", "fontWeight": "700"}],
+                      "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .prestige-shadow {
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased min-h-screen">
+<main class="max-w-7xl mx-auto px-margin-page py-16 space-y-12">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-outline-variant/30 pb-10">
+<div class="space-y-2">
+<h1 class="font-h1 text-h1 text-primary-container tracking-tighter">Team Performance</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Detailed metrics for all sales representatives</p>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="px-6 py-2.5 bg-primary-container text-on-primary font-label-caps uppercase tracking-widest rounded-lg prestige-shadow hover:opacity-90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Export Ledger
+                </button>
+</div>
+</header>
+<!-- Top Performers Section -->
+<section class="space-y-stack-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<h2 class="font-h2 text-h2 text-primary-container">Top Performers</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Rank 2 -->
+<div class="order-2 md:order-1 bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-8 prestige-shadow relative overflow-hidden group transition-transform hover:-translate-y-1">
+<div class="absolute top-0 right-0 p-4">
+<span class="text-on-primary-container/20 font-h1 text-7xl select-none">02</span>
+</div>
+<div class="relative z-10 space-y-6">
+<img alt="Marcus Chen" class="w-20 h-20 rounded-full object-cover border-2 border-slate-100 shadow-sm" data-alt="A professional headshot of a senior male sales executive in a tailored charcoal suit, set against a blurred high-rise office background. The lighting is crisp and cinematic, emphasizing an authoritative and sophisticated corporate aesthetic. The color palette is muted with deep navies and cool greys, matching a premium executive ledger interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnWAynelt1Fit5wokUXUq7S8JjUb6v093jK7Dc_iRDNRdC-mo3rrQZz6CRm4_4W1ZD29fLVZQl4u6EQK_ToYsJBcHueUtMt6VYiI-z_tRf0xKSgeeqtKM7RSry1DVfU6MzLQZbYkb8UHLCjTsiKLnfFn_uXgubN2bBux0sTQKDwDnq7-P4UroMtkdE_rOM6cUplvJ73tTo9nhs425Ho4PhtYIkYL9Ak1rH8GO18wJTmPkS87nsUwzGlswoDwRRnyIRWi8D8J-JMA4"/>
+<div class="space-y-1">
+<h3 class="font-h3 text-h3 text-primary-container">Marcus Chen</h3>
+<span class="font-label-caps text-on-secondary-container bg-secondary-container px-3 py-1 rounded">Senior Lead</span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-outline-variant/20">
+<div>
+<p class="font-label-caps text-on-surface-variant opacity-60 mb-1">REVENUE</p>
+<p class="font-data-tabular text-xl font-bold text-primary-container">$1.42M</p>
+</div>
+<div>
+<p class="font-label-caps text-on-surface-variant opacity-60 mb-1">DEALS</p>
+<p class="font-data-tabular text-xl font-bold text-primary-container">58</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Rank 1 (Featured) -->
+<div class="order-1 md:order-2 bg-primary-container text-on-primary border border-primary rounded-xl p-10 prestige-shadow relative overflow-hidden group scale-105 z-20 transition-transform hover:-translate-y-2">
+<div class="absolute -bottom-10 -right-10 opacity-5">
+<span class="material-symbols-outlined text-[240px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="relative z-10 space-y-8">
+<div class="flex justify-between items-start">
+<img alt="Elena Rodriguez" class="w-28 h-28 rounded-full object-cover border-4 border-white/10 shadow-xl" data-alt="A detailed portrait of a female executive leader with an expression of quiet confidence, wearing premium professional attire. The setting is a minimalist, brightly lit executive suite with soft, directional lighting that creates elegant highlights. The image conveys a sense of high-status achievement and editorial quality, utilizing a sophisticated palette of deep navy and bright ivory." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzS2pv11yY5-PI0KUN-lNnpCwW6niXQTu6fiPIzdeW_6qzsntxCTSHQ4BHePiVjlIS-EMn2o-9UUjMmjnScdaX7XFkFgm1l3mpO3U5LnlWKOugDuiTxklcilJjVOw40DGbXwk1AcTFj__2vgcdAjmbANbFsTfgLf8ZPHu3Lwzb311khswq7qtnmshf5wIytBp1lEUB8-POm0NFppBLVELHpzGeY5jhsGz6Z5PXbnPkcBKpEiadbb6b-tcwzuXoHtHLDchhDSlQo5s"/>
+<div class="bg-white/10 backdrop-blur px-4 py-2 rounded-full border border-white/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+<span class="font-label-caps text-xs">MVP This Month</span>
+</div>
+</div>
+<div class="space-y-2">
+<h3 class="text-4xl font-extrabold tracking-tight">Elena Rodriguez</h3>
+<p class="font-body-md text-white/70">Strategic Accounts Director</p>
+</div>
+<div class="grid grid-cols-2 gap-8 pt-6 border-t border-white/10">
+<div>
+<p class="font-label-caps text-white/50 mb-2">TOTAL REVENUE</p>
+<p class="font-data-tabular text-3xl font-black">$2.18M</p>
+</div>
+<div>
+<p class="font-label-caps text-white/50 mb-2">QUOTA STATUS</p>
+<p class="font-data-tabular text-3xl font-black">142%</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between font-label-caps text-xs">
+<span>Monthly Progress</span>
+<span>$1.5M Goal</span>
+</div>
+<div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-white rounded-full w-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="order-3 bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-8 prestige-shadow relative overflow-hidden group transition-transform hover:-translate-y-1">
+<div class="absolute top-0 right-0 p-4">
+<span class="text-on-primary-container/20 font-h1 text-7xl select-none">03</span>
+</div>
+<div class="relative z-10 space-y-6">
+<img alt="Julian Thorne" class="w-20 h-20 rounded-full object-cover border-2 border-slate-100 shadow-sm" data-alt="A high-end editorial headshot of a focused male professional in his late 30s. He is dressed in a crisp white shirt and navy tie. The lighting is architectural and modern, casting soft shadows in a minimalist corporate lounge. The overall aesthetic is one of calm precision and high-level financial authority, consistent with an expensive digital ledger style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3hk9mHqEkkDvj1hcPFiQe-NGuYl0SF_Gj98jbAM93Lc22VphrTEAi0IBxi1TN-yc-G-n5HJEsBu4wxJEa1fLM4x7P5zAkQ4iGNM2imtQdJfH48TW8YuHcRRjZTwf1aQ32FmL0gMk9sv7Dfo8BdblcIB-zqN3w66oImDVMdzsE_BA30qrX3lqsUtTGOqDICJpjfKFZst3N2Iq8uszQWg_EADf8s0z1kkUJMmx_xFyGYJIy4dWx0EQyOZ7maM_PEnYjWJHjgUgcza8"/>
+<div class="space-y-1">
+<h3 class="font-h3 text-h3 text-primary-container">Julian Thorne</h3>
+<span class="font-label-caps text-on-secondary-container bg-secondary-container px-3 py-1 rounded">Global Sales</span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-outline-variant/20">
+<div>
+<p class="font-label-caps text-on-surface-variant opacity-60 mb-1">REVENUE</p>
+<p class="font-data-tabular text-xl font-bold text-primary-container">$1.15M</p>
+</div>
+<div>
+<p class="font-label-caps text-on-surface-variant opacity-60 mb-1">DEALS</p>
+<p class="font-data-tabular text-xl font-bold text-primary-container">42</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Team Grid Section -->
+<section class="space-y-stack-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">group</span>
+<h2 class="font-h3 text-h3 text-primary-container">Division Representatives</h2>
+</div>
+<div class="flex gap-2">
+<span class="material-symbols-outlined p-2 hover:bg-surface-container rounded-lg cursor-pointer transition-colors">filter_list</span>
+<span class="material-symbols-outlined p-2 hover:bg-surface-container rounded-lg cursor-pointer transition-colors">sort</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Performer Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-6 prestige-shadow hover:border-primary-container/30 transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<img alt="Sarah Jenkins" class="w-12 h-12 rounded-lg object-cover" data-alt="Close-up professional portrait of a woman in minimalist office attire. High-key lighting, soft white and light grey backgrounds, conveying a premium corporate identity. The visual style is crisp and editorial, focusing on clarity and professional poise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw04-waafuSdI8Twollb7QMN6b0IEOsdN9dfeh-eBhkxmSwgPs_NHqwo5wFJMvh7zTO8MVVo7XUpSHlO7amiAV2TJeyXWs1tbxJNHheVWloPIOh7VHK07hDyOkHujsx0tpyaDefCgrhjRF2ZuJdeHScjCaw1QJhADIUUKC9t4nJQ7uFzv_-DRkJLFXSTFWRwh5p4Efl6gDXAZ-8N0QoP58Ue1wYuM0-pmIcCaJ470MR75mE9w_u5goYppgj38ItUG4_e3sCL46z2g"/>
+<div>
+<p class="font-body-md font-bold text-primary-container">Sarah Jenkins</p>
+<p class="font-label-caps text-[10px] text-on-surface-variant">Enterprise Manager</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-0.5">REVENUE</p>
+<p class="font-data-tabular font-bold text-primary-container">$942k</p>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-0.5">DEALS</p>
+<p class="font-data-tabular font-bold text-primary-container">31</p>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-[10px] font-label-caps">
+<span class="text-on-surface-variant">Quota Progress</span>
+<span class="text-primary-container">94%</span>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full">
+<div class="h-full bg-primary-container rounded-full transition-all duration-1000" style="width: 94%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Performer Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-6 prestige-shadow hover:border-primary-container/30 transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<img alt="David Park" class="w-12 h-12 rounded-lg object-cover" data-alt="A sharp, studio-lit headshot of a male professional with a confident, slight smile. The background is a clean off-white studio setting. The lighting is balanced and expensive-looking, emphasizing professional status. The overall aesthetic aligns with high-end financial dashboard UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJd47KWeYjComCodv3V_Y0rw8dcc2SVbatxTHaF7Wpm1qVGhiMAkbNcGbcThI1wizQOWMRUEkC9VCFy5HyHcQYqm_eA3mhcssLkL5sOKiu8AX4YrA8G9LIski786NQclBW1HvM0itbVZo0JxufhjqpEoY0S8vNNyt2d3f-ujyGWS6Lseug_98Npc_uQ4ycqVqtjEIVi25ZEFEOveQ9SMmVsFK7TMnvhfIigvs1b1yXhjFAmY-atnoXbz03fxCOHTxfGaZFiqT8OAY"/>
+<div>
+<p class="font-body-md font-bold text-primary-container">David Park</p>
+<p class="font-label-caps text-[10px] text-on-surface-variant">Strategic Sales</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-0.5">REVENUE</p>
+<p class="font-data-tabular font-bold text-primary-container">$815k</p>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-0.5">DEALS</p>
+<p class="font-data-tabular font-bold text-primary-container">28</p>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-[10px] font-label-caps">
+<span class="text-on-surface-variant">Quota Progress</span>
+<span class="text-primary-container">82%</span>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full">
+<div class="h-full bg-primary-container rounded-full transition-all duration-1000" style="width: 82%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Performer Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-6 prestige-shadow hover:border-primary-container/30 transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<img alt="Maya Thompson" class="w-12 h-12 rounded-lg object-cover" data-alt="Professional portrait of a woman in an executive setting, featuring a neutral color palette of ivory and deep slate. The lighting is soft and diffused, creating a serene and focused mood. The style is minimalist and corporate modern, reflecting high-end utility and executive leadership." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFdAzTaYFmAal9-a4PN4Jkj2GuyhCGeHMV0NpJ1mGenikx4KYpcGYV4_oWLjh7ZTiN4jOiIm8vaMz9hftKLu9WDWWlT2wklOU88jDP0vYIatEZaurqm82aQx6YirrkpeXWFfXz2PB7kMzgCNSVHaYqGR8Si0bMFMM47Rj0NoT46_S8kkRO523dhftR5H1WVrED7id9G_tUKdVP80Oq5z8Sv5hyotrDEOjGW2NrG06JoQ6nK896NVb_s5-c-Xn-3dpeBf2mLeQBtcM"/>
+<div>
+<p class="font-body-md font-bold text-primary-container">Maya Thompson</p>
+<p class="font-label-caps text-[10px] text-on-surface-variant">Account Exec</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-0.5">REVENUE</p>
+<p class="font-data-tabular font-bold text-primary-container">$760k</p>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-0.5">DEALS</p>
+<p class="font-data-tabular font-bold text-primary-container">24</p>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-[10px] font-label-caps">
+<span class="text-on-surface-variant">Quota Progress</span>
+<span class="text-primary-container">76%</span>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full">
+<div class="h-full bg-primary-container rounded-full transition-all duration-1000" style="width: 76%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Performer Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-6 prestige-shadow hover:border-primary-container/30 transition-all group">
+<div class="flex items-center gap-4 mb-6">
+<img alt="Robert Vance" class="w-12 h-12 rounded-lg object-cover" data-alt="Editorial profile picture of a businessman in a light-filled modern office space. The lighting is high-contrast and professional, with a clean and authoritative aesthetic. The palette is dominated by slate and muted tones, embodying a sense of calm under pressure and executive control." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRQTmJm1ryTHbBzfYkETHA67EMSRuMiaBiGYntfs5uJF15bJilIHUPuZSuQRj88ztT_HLLky1AZSww0_Hmdz0UcGRSBLl8VWXiza4bnJ9-0p2mKFNXacqYnIVxb5x6GdkJnayr3KPAJCmuZvegCDvL0eHtujvpm8LCD-ydmMbDtl-3VaUoWS0OhZn5oNsqSFreln0iMlG7HrF4TBfPscfNBvh5nV-HJLbbJaaDm-3ywM3TTBwxHahLsPH63lzCTp34XTIqE28IT5U"/>
+<div>
+<p class="font-body-md font-bold text-primary-container">Robert Vance</p>
+<p class="font-label-caps text-[10px] text-on-surface-variant">Regional Lead</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<div>
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-0.5">REVENUE</p>
+<p class="font-data-tabular font-bold text-primary-container">$688k</p>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-[10px] text-on-surface-variant mb-0.5">DEALS</p>
+<p class="font-data-tabular font-bold text-primary-container">19</p>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-[10px] font-label-caps">
+<span class="text-on-surface-variant">Quota Progress</span>
+<span class="text-primary-container">68%</span>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full">
+<div class="h-full bg-primary-container rounded-full transition-all duration-1000" style="width: 68%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- More indicator -->
+<div class="flex justify-center pt-8">
+<button class="font-label-caps text-xs text-on-surface-variant hover:text-primary-container flex items-center gap-2 border-b border-transparent hover:border-primary-container transition-all pb-1">
+                    Load More Team Members
+                    <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Footer Metric Bar -->
+<footer class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex items-center gap-8">
+<div class="space-y-1">
+<p class="font-label-caps text-[10px] text-on-surface-variant">TEAM TOTAL REVENUE</p>
+<p class="font-h3 text-h3 text-primary-container">$12.4M</p>
+</div>
+<div class="h-12 w-px bg-outline-variant/30 hidden md:block"></div>
+<div class="space-y-1">
+<p class="font-label-caps text-[10px] text-on-surface-variant">AVG PERFORMANCE</p>
+<p class="font-h3 text-h3 text-primary-container">88.4%</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2 text-right">
+<p class="font-body-sm text-on-surface-variant italic">Next performance review scheduled for August 15, 2024</p>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<div class="w-2 h-2 rounded-full bg-primary-container/40"></div>
+<div class="w-2 h-2 rounded-full bg-primary-container/20"></div>
+</div>
+</div>
+</footer>
+</main>
+</body></html>

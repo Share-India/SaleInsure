@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-container": "#57657b",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#07006c",
+                        "primary-fixed": "#dae2fd",
+                        "surface-container": "#eceef0",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#000000",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-dim": "#d8dadc",
+                        "inverse-primary": "#bec6e0",
+                        "secondary-fixed": "#d5e3fd",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "tertiary-container": "#07006c",
+                        "on-background": "#191c1e",
+                        "outline-variant": "#c6c6cd",
+                        "outline": "#76777d",
+                        "on-primary-container": "#7c839b",
+                        "on-primary-fixed": "#131b2e",
+                        "background": "#f7f9fb",
+                        "surface-tint": "#565e74",
+                        "surface-container-high": "#e6e8ea",
+                        "primary": "#000000",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#e1e0ff",
+                        "primary-container": "#131b2e",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-surface-variant": "#45464d",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "secondary-container": "#d5e3fd",
+                        "on-tertiary-container": "#7073ff",
+                        "on-surface": "#191c1e",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#515f74"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "margin-page": "40px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "container-padding": "32px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "h1": ["Manrope"],
+                        "h2": ["Manrope"],
+                        "h3": ["Manrope"],
+                        "data-tabular": ["Manrope"],
+                        "body-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.08em", "fontWeight": "700"}],
+                        "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "h3": ["24px", {"lineHeight": "1.3", "letterSpacing": "0em", "fontWeight": "600"}],
+                        "data-tabular": ["14px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f7f9fb; /* surface-bright from theme */
+        }
+        .prestige-shadow {
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 8px -2px rgba(15, 23, 42, 0.02);
+        }
+        .timeline-connector {
+            width: 1px;
+            background-color: #e2e8f0; /* outline-variant approximation */
+            position: absolute;
+            top: 48px;
+            bottom: -24px;
+            left: 20px;
+        }
+        .timeline-item:last-child .timeline-connector {
+            display: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<div class="max-w-4xl mx-auto py-margin-page px-container-padding min-h-screen">
+<!-- Header Section -->
+<header class="mb-stack-lg border-b border-outline-variant pb-stack-lg">
+<h1 class="font-h1 text-h2 text-on-background mb-2">Activity Feed</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">
+                Real-time chronological log of all team interactions, providing an immutable record of sales excellence.
+            </p>
+</header>
+<!-- Main Timeline Container -->
+<div class="relative">
+<!-- Timeline Item: Closure -->
+<div class="timeline-item relative flex gap-stack-md pb-stack-lg group">
+<div class="timeline-connector"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden bg-white flex items-center justify-center shrink-0">
+<img alt="John Doe" class="w-full h-full object-cover" data-alt="A professional headshot of a senior male executive in his mid-40s, wearing a crisp tailored navy blazer and a light blue dress shirt. He is set against a blurred, high-end corporate office background with warm, soft natural lighting. The image style is polished and minimalist, aligning with a prestigious financial brand's visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtb2gc46F-TxrThECLfJPIMiWBYT_c0sHzn-v-6MAdOGv_qdkapmduubJNunSdh3jugGqWgSjhd9rejTOYzg57S_3_lIwgvXLOvJhOcybAIHruQTud75deBOFbl09Q-XxhCTfbrCJ2sMqO7nfgR8g5tEaLq4I-vAVdqlBWCeofWaDH-YVXqIhdEx0JemcnKY0X27idXzi2bpxhXQBMETE5EgKcqicepckZnjWutHLyg1KmAUmwqDFfJnDX25K8uOIKRKWsCjTRZVs"/>
+</div>
+<div class="mt-stack-sm bg-primary-container text-on-primary p-1.5 rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="handshake" style="font-variation-settings: 'FILL' 1;">handshake</span>
+</div>
+</div>
+<div class="flex-1 pt-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-label-caps text-on-secondary-container uppercase">Closure</span>
+<time class="font-data-tabular text-data-tabular text-outline">OCT 24, 2023 • 09:42 AM</time>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md prestige-shadow rounded-lg">
+<p class="font-body-md text-on-surface mb-stack-sm">
+<span class="font-bold text-primary">John Doe</span> closed a high-priority deal with <span class="font-bold text-primary">ACME Corp</span>.
+                        </p>
+<div class="flex flex-wrap gap-stack-md">
+<div class="bg-surface-container px-3 py-1.5 rounded-sm border border-outline-variant/30">
+<span class="font-label-caps text-[10px] text-outline block">DEAL VALUE</span>
+<span class="font-data-tabular text-on-surface">$50,000.00</span>
+</div>
+<div class="bg-surface-container px-3 py-1.5 rounded-sm border border-outline-variant/30">
+<span class="font-label-caps text-[10px] text-outline block">QUARTER</span>
+<span class="font-data-tabular text-on-surface">Q4 2023</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Item: Connection -->
+<div class="timeline-item relative flex gap-stack-md pb-stack-lg group">
+<div class="timeline-connector"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden bg-white flex items-center justify-center shrink-0">
+<img alt="Sarah Chen" class="w-full h-full object-cover" data-alt="A sophisticated professional portrait of a woman of East Asian descent in an executive leadership role. She has a confident expression, wearing a minimalist black turtleneck. The lighting is soft and directional, creating subtle highlights on her face against a neutral, high-key studio background. The overall aesthetic is clean, corporate, and high-end." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5H2-eFcZ2unv7Wtd6QiPjZRUrFsDACZO5CqGZqLnAFJCt56RUaH9qKi_IJ6aAt1qSHrK19a3BaBTTXYGfmNyDjkPxCZpUg45H_YL07nYSK-2fNcrT_Ea6WO1eROp-OFCxM5zbHELkWGW3qXeNyTKHdqIk9-gz3INbw7FrKKWHL6vbdhC45ZTO9bObGOMeLReFiaZ1yGH9T65NuvgHkCxcjod8Vw2uUhKGBK-Cq0-oG1rHxfV8kAYLrspGU5oQEaWJj2PB6S5yzzM"/>
+</div>
+<div class="mt-stack-sm bg-secondary-container text-on-secondary-fixed-variant p-1.5 rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+</div>
+</div>
+<div class="flex-1 pt-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-label-caps text-on-secondary-container uppercase">Connection</span>
+<time class="font-data-tabular text-data-tabular text-outline">OCT 24, 2023 • 08:15 AM</time>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md prestige-shadow rounded-lg">
+<p class="font-body-md text-on-surface mb-stack-sm">
+<span class="font-bold text-primary">Sarah Chen</span> established a new lead connection with <span class="font-bold text-primary">Global Logistics Group</span>.
+                        </p>
+<div class="flex flex-wrap gap-stack-md">
+<div class="bg-surface-container px-3 py-1.5 rounded-sm border border-outline-variant/30">
+<span class="font-label-caps text-[10px] text-outline block">CHANNEL</span>
+<span class="font-data-tabular text-on-surface">Direct Referral</span>
+</div>
+<div class="bg-surface-container px-3 py-1.5 rounded-sm border border-outline-variant/30">
+<span class="font-label-caps text-[10px] text-outline block">PROBABILITY</span>
+<span class="font-data-tabular text-on-surface">65%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Item: Conversation -->
+<div class="timeline-item relative flex gap-stack-md pb-stack-lg group">
+<div class="timeline-connector"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden bg-white flex items-center justify-center shrink-0">
+<img alt="Marcus Thorne" class="w-full h-full object-cover" data-alt="A portrait of a male professional in a charcoal gray business suit and silk tie. He is standing in a brightly lit architectural space with glass and steel elements. The lighting is high-contrast and authoritative, reflecting a sense of stability and prestige. The color palette is dominated by grays, whites, and deep blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPdpiRIvZOvW8EpeV4rsGIu7lymOYEurqTH85BtTS5vDh0lwO8t5KE9Ey88rFQTf-IN7jU9d2A92_QkghGD5ap3w37-0QlG7dQugielLYWztYzRI-qqw7xkloV63lrW4nn_-weoP0VKYpfWj1Pcdo_HW0cI_xVyDV1_Ao77pI5hzXCO5j2jZfhexPkZ0QRlxt4R-_xREHNhMd19fcKQwBtX1xNVtoO18Y3j5rkqJgFjYpyMAjLOIHfU87CX_1WEWMYgxsPCmCunbA"/>
+</div>
+<div class="mt-stack-sm bg-surface-container-highest text-on-surface p-1.5 rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+</div>
+</div>
+<div class="flex-1 pt-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-label-caps text-on-secondary-container uppercase">Conversation</span>
+<time class="font-data-tabular text-data-tabular text-outline">OCT 23, 2023 • 04:50 PM</time>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md prestige-shadow rounded-lg">
+<p class="font-body-md text-on-surface mb-stack-sm">
+<span class="font-bold text-primary">Marcus Thorne</span> logged a strategy call with the CEO of <span class="font-bold text-primary">Vanguard Systems</span>.
+                        </p>
+<div class="p-3 bg-surface-container-low rounded italic text-body-sm text-secondary border-l-2 border-primary">
+                            "Discussed the expansion of service level agreements for the 2024 fiscal year. Client expressed interest in the premium executive reporting module."
+                        </div>
+<div class="mt-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-outline" data-icon="attach_file">attach_file</span>
+<span class="font-body-sm text-on-primary-container underline cursor-pointer">meeting_minutes_vanguard.pdf</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Item: Closure (Small) -->
+<div class="timeline-item relative flex gap-stack-md pb-stack-lg group">
+<div class="timeline-connector"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden bg-white flex items-center justify-center shrink-0">
+<img alt="Elena Rossi" class="w-full h-full object-cover" data-alt="A close-up professional portrait of a woman in her late 30s with a discerning and intelligent expression. She is wearing a modern tailored cream-colored blazer. The background is a clean, bright minimalist interior with subtle architectural shadows. The image suggests expertise and high-level corporate consulting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgAdjnEnoIKm18j3Qw7kQq1EaeSbc0wpi-ZV-FglPdfhg0_eREWtBA7bw5KoZi6oM8CwyRGphL7oULWJfi7nJIF4K3p-cGPsoGUuBSMIVVdMxRAoAzVrB3OoQC4MpWcdJBF4JuzS37Nl9ippxHIcWiNWvzP5Gq8EwiGfw4nKh7YZdkR0n2ued-ak-4yM4DEZ9TI4ir9TJqPGLxJRKrSIkbgR9pwJttqkP9EM9rP8tGDdFn4ph90XOkdB-kbflCUOZndwmvqmrZgxI"/>
+</div>
+<div class="mt-stack-sm bg-primary-container text-on-primary p-1.5 rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="handshake" style="font-variation-settings: 'FILL' 1;">handshake</span>
+</div>
+</div>
+<div class="flex-1 pt-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-label-caps text-on-secondary-container uppercase">Closure</span>
+<time class="font-data-tabular text-data-tabular text-outline">OCT 23, 2023 • 02:10 PM</time>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md prestige-shadow rounded-lg">
+<p class="font-body-md text-on-surface mb-stack-sm">
+<span class="font-bold text-primary">Elena Rossi</span> finalized the partnership contract for <span class="font-bold text-primary">Horizon Ventures</span>.
+                        </p>
+<div class="flex flex-wrap gap-stack-md">
+<div class="bg-surface-container px-3 py-1.5 rounded-sm border border-outline-variant/30">
+<span class="font-label-caps text-[10px] text-outline block">DEAL VALUE</span>
+<span class="font-data-tabular text-on-surface">$125,000.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination/Footer Information -->
+<footer class="mt-stack-lg pt-stack-md border-t border-outline-variant flex justify-between items-center">
+<p class="font-body-sm text-outline">Displaying last 24 hours of activity</p>
+<button class="bg-primary text-on-primary px-container-padding py-2 rounded-sm font-label-caps text-[11px] uppercase tracking-widest hover:bg-on-primary-container transition-colors shadow-sm">
+                View Full Archive
+            </button>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SalesForce Pro | Sales Manager Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#2563eb",
+                    "on-surface": "#0b1c30",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#213145",
+                    "on-secondary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "on-primary-container": "#eeefff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "inverse-primary": "#b4c5ff",
+                    "tertiary-fixed-dim": "#6bd8cb",
+                    "on-error": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "on-secondary-fixed": "#341100",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "on-secondary-fixed-variant": "#783200",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#007b71",
+                    "on-tertiary-fixed-variant": "#005049",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#5c2400",
+                    "secondary-fixed": "#ffdbca",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-low": "#eff4ff",
+                    "primary": "#004ac6",
+                    "surface": "#f8f9ff",
+                    "surface-dim": "#cbdbf5",
+                    "on-tertiary-fixed": "#00201d",
+                    "on-surface-variant": "#434655",
+                    "tertiary-fixed": "#89f5e7",
+                    "secondary": "#9d4300",
+                    "secondary-fixed-dim": "#ffb690",
+                    "on-primary-fixed": "#00174b",
+                    "surface-tint": "#0053db",
+                    "tertiary": "#006058",
+                    "on-tertiary-container": "#b3fff3",
+                    "outline-variant": "#c3c6d7",
+                    "outline": "#737686",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-bright": "#f8f9ff",
+                    "secondary-container": "#fd761a",
+                    "surface-container-high": "#dce9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "2rem",
+                    "container-padding": "2rem",
+                    "stack-sm": "0.5rem",
+                    "gutter": "1.5rem",
+                    "stack-md": "1rem",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "display-lg": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "stat-lg": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "stat-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .canvas-bg {
+            background: radial-gradient(circle at top right, #f0f4ff, #f8f9ff);
+        }
+    </style>
+</head>
+<body class="canvas-bg text-on-surface min-h-screen overflow-x-hidden">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 flex flex-col h-full py-6 px-4 z-40 bg-white/70 backdrop-blur-[40px] h-screen w-64 border-r border-white/40 shadow-2xl shadow-blue-500/5">
+<div class="mb-10 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div>
+<h1 class="text-lg font-extrabold text-blue-600">SalesForce</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Visionary CRM</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 bg-blue-600 text-white rounded-lg px-4 py-3 shadow-[0_10px_20px_rgba(37,99,235,0.3)]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 px-4 py-3 hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-md text-label-md">Team Performance</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 px-4 py-3 hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Revenue Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 px-4 py-3 hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label-md text-label-md">Deal Pipeline</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 px-4 py-3 hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md text-label-md">Activity Feed</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-1 border-t border-white/40 pt-6">
+<button class="mb-4 bg-primary text-white rounded-xl py-3 px-4 font-label-md shadow-lg shadow-blue-500/20 active:scale-95 transition-transform">
+                Create New Deal
+            </button>
+<a class="flex items-center gap-3 text-slate-600 px-4 py-2 hover:bg-white/80 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 px-4 py-2 hover:bg-white/80 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-white/70 backdrop-blur-[20px] flex justify-between items-center px-8 z-30 border-b border-white/40 shadow-[0_10px_30px_-15px_rgba(37,99,235,0.1)]">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg" data-icon="search">search</span>
+<input class="w-full bg-slate-50/50 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-blue-500/20 placeholder:text-slate-400" placeholder="Search analytics, deals, or team members..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-blue-50/50 rounded-full transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full border-2 border-white"></span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-blue-50/50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-blue-50/50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-slate-200"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="font-label-md text-slate-900 leading-none">Alex Rivera</p>
+<p class="text-[10px] font-bold text-blue-600 leading-none mt-1">Sales Manager</p>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm">
+<img alt="Sales Manager Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a Hispanic male sales manager in his late 30s with a confident expression. He is wearing a modern charcoal grey blazer over a crisp white shirt. The background is a brightly lit, out-of-focus modern office space with subtle blue and white tones, creating a clean and corporate look that matches the high-end UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzYt8XE9JJf5GB4XwY_sMhnJiVkwp7I9L5E29ECC4sCxHvsbPndy-s4UQGdQBjC4uIyYVOJcuhhAPrBzcOpkQ-N9dX6Z6H1ukMIzmwRM7hxhZIU86rRlT9YnhBRq1i-gOzjobc1WyPDdGbhVzVJ8wfXRs2ldSrkjO8lzcpqUCHK3o0g3jOmjhFg6roOFqJeWVrWrFsiqRnE7G0yGX77bRXZ6WtJxDu-lO4SK4FOwh92FqtuMJ4BA1JWruohntwDzyr_PBXvxmekfRC"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-24 px-8 pb-12">
+<!-- Welcome Header -->
+<div class="mb-10 flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Team Performance Dashboard</h2>
+<p class="font-body-md text-slate-500 mt-1">Real-time intelligence for the current sales cycle.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-white/60 shadow-sm text-label-md text-slate-600 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="calendar_today">calendar_today</span>
+                    Today: Oct 24
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-white/60 shadow-sm text-label-md text-slate-600 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="file_download">file_download</span>
+                    Export PDF
+                </button>
+</div>
+</div>
+<!-- Aggregated Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+<!-- Metric Card 1 -->
+<div class="glass-card p-6 rounded-2xl shadow-xl shadow-blue-500/5">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+</div>
+<span class="px-2 py-1 rounded-md bg-emerald-50 text-emerald-600 text-[10px] font-bold">+12%</span>
+</div>
+<h3 class="text-slate-500 font-label-md mb-1">Total Talks Today</h3>
+<div class="flex items-baseline gap-2">
+<span class="font-stat-lg text-stat-lg text-on-surface">148</span>
+<span class="text-slate-400 text-sm">/ 180 target</span>
+</div>
+<div class="mt-4 h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-blue-500 rounded-full" style="width: 82%"></div>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="glass-card p-6 rounded-2xl shadow-xl shadow-blue-500/5">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+</div>
+<span class="px-2 py-1 rounded-md bg-emerald-50 text-emerald-600 text-[10px] font-bold">+5%</span>
+</div>
+<h3 class="text-slate-500 font-label-md mb-1">Connections Made</h3>
+<div class="flex items-baseline gap-2">
+<span class="font-stat-lg text-stat-lg text-on-surface">54</span>
+<span class="text-slate-400 text-sm">Active leads</span>
+</div>
+<div class="mt-4 flex gap-1 items-end h-8">
+<div class="flex-1 bg-tertiary-fixed rounded-t-sm h-[40%]"></div>
+<div class="flex-1 bg-tertiary-fixed rounded-t-sm h-[60%]"></div>
+<div class="flex-1 bg-tertiary-fixed rounded-t-sm h-[45%]"></div>
+<div class="flex-1 bg-tertiary-fixed rounded-t-sm h-[80%]"></div>
+<div class="flex-1 bg-tertiary-fixed rounded-t-sm h-[95%]"></div>
+<div class="flex-1 bg-tertiary-fixed rounded-t-sm h-[70%]"></div>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="glass-card p-6 rounded-2xl shadow-xl shadow-blue-500/5">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="task_alt">task_alt</span>
+</div>
+<span class="px-2 py-1 rounded-md bg-orange-50 text-orange-600 text-[10px] font-bold">On Track</span>
+</div>
+<h3 class="text-slate-500 font-label-md mb-1">Deals Closed</h3>
+<div class="flex items-baseline gap-2">
+<span class="font-stat-lg text-stat-lg text-on-surface">19</span>
+<span class="text-slate-400 text-sm">Today</span>
+</div>
+<div class="mt-4 h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-orange-500 rounded-full" style="width: 65%"></div>
+</div>
+</div>
+<!-- Metric Card 4 -->
+<div class="glass-card p-6 rounded-2xl shadow-xl shadow-blue-500/5">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<span class="px-2 py-1 rounded-md bg-emerald-50 text-emerald-600 text-[10px] font-bold">+24%</span>
+</div>
+<h3 class="text-slate-500 font-label-md mb-1">Premium Revenue</h3>
+<div class="flex items-baseline gap-2">
+<span class="font-stat-lg text-stat-lg text-on-surface">$24,500</span>
+</div>
+<p class="mt-4 text-[12px] font-bold text-blue-600 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                    Record day for Q4
+                </p>
+</div>
+</div>
+<!-- Main Insights Section (Bento Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Team Performance Overview (Large) -->
+<div class="lg:col-span-2 glass-card rounded-3xl p-8 shadow-xl shadow-blue-500/5">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Revenue Progress</h3>
+<p class="text-slate-500 font-label-md">Monthly goal vs Current progress</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-[12px] font-bold">Revenue</button>
+<button class="px-3 py-1.5 bg-slate-50 text-slate-600 rounded-lg text-[12px] font-bold">Volume</button>
+</div>
+</div>
+<div class="relative h-64 w-full flex items-end gap-4 px-4">
+<!-- Chart Simulation -->
+<div class="flex-1 bg-blue-100/50 rounded-t-xl relative group h-[40%]">
+<div class="absolute bottom-0 w-full bg-blue-600 rounded-t-xl transition-all duration-500 h-[70%] group-hover:h-[80%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-slate-400 font-label-sm">Mon</span>
+</div>
+<div class="flex-1 bg-blue-100/50 rounded-t-xl relative group h-[55%]">
+<div class="absolute bottom-0 w-full bg-blue-600 rounded-t-xl transition-all duration-500 h-[60%] group-hover:h-[70%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-slate-400 font-label-sm">Tue</span>
+</div>
+<div class="flex-1 bg-blue-100/50 rounded-t-xl relative group h-[70%]">
+<div class="absolute bottom-0 w-full bg-blue-600 rounded-t-xl transition-all duration-500 h-[85%] group-hover:h-[95%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-slate-400 font-label-sm">Wed</span>
+</div>
+<div class="flex-1 bg-blue-100/50 rounded-t-xl relative group h-[60%]">
+<div class="absolute bottom-0 w-full bg-blue-600 rounded-t-xl transition-all duration-500 h-[75%] group-hover:h-[85%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-slate-400 font-label-sm">Thu</span>
+</div>
+<div class="flex-1 bg-blue-100/50 rounded-t-xl relative group h-[85%]">
+<div class="absolute bottom-0 w-full bg-blue-600 rounded-t-xl transition-all duration-500 h-[90%] group-hover:h-[100%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-slate-400 font-label-sm">Fri</span>
+</div>
+<div class="flex-1 bg-blue-100/50 rounded-t-xl relative group h-[45%]">
+<div class="absolute bottom-0 w-full bg-blue-600 rounded-t-xl transition-all duration-500 h-[30%] group-hover:h-[40%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-slate-400 font-label-sm">Sat</span>
+</div>
+<div class="flex-1 bg-blue-100/50 rounded-t-xl relative group h-[30%]">
+<div class="absolute bottom-0 w-full bg-blue-600 rounded-t-xl transition-all duration-500 h-[20%] group-hover:h-[30%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-slate-400 font-label-sm">Sun</span>
+</div>
+</div>
+<div class="mt-16 grid grid-cols-3 gap-8 pt-8 border-t border-slate-100">
+<div>
+<p class="text-slate-400 text-[12px] font-bold uppercase tracking-wider mb-1">Target</p>
+<p class="font-headline-md text-headline-md">$500,000</p>
+</div>
+<div>
+<p class="text-slate-400 text-[12px] font-bold uppercase tracking-wider mb-1">Achieved</p>
+<p class="font-headline-md text-headline-md text-blue-600">$342,850</p>
+</div>
+<div>
+<p class="text-slate-400 text-[12px] font-bold uppercase tracking-wider mb-1">Gap</p>
+<p class="font-headline-md text-headline-md text-orange-600">$157,150</p>
+</div>
+</div>
+</div>
+<!-- Recent Team Activity (Feed) -->
+<div class="glass-card rounded-3xl p-8 shadow-xl shadow-blue-500/5 flex flex-col">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Activity</h3>
+<button class="text-blue-600 font-label-md hover:underline">View All</button>
+</div>
+<div class="space-y-6 flex-1 overflow-y-auto pr-2">
+<!-- Activity Item 1 -->
+<div class="flex gap-4 group">
+<div class="relative">
+<div class="w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden flex-shrink-0">
+<img alt="Sarah Miller" data-alt="A smiling female professional in her late 20s with long dark hair, wearing a stylish beige sweater. She is in a high-tech modern office environment with soft morning sunlight streaming through glass windows. The overall aesthetic is professional, modern, and high-energy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCktf4xPIGjtqe2BQOEvtRWxKCOUMoEaHe1GzsSzgVG-D13mYdpL5dLWugN_vSeslSE3rDIMxcsGnrF-kdNVIZQpVrRyBoLktF4p6VpHswmJOop2wdkgEbS1O3lw8y1RbJdGOeQTsCZyn_B4Pd2-ttKUJ5ihtor4C_HRfSCLKo9eUYVkzPU8FuV1eVNeuEqjiMM9qLJfH_8vaFvaRhl2wmvX2DHiguwO7GLpUpGlXYYZeITeB-xxv7Yq4aIoJRGxG5RM6oYiHgnRh_5"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-on-surface">
+<span class="font-bold">Sarah Miller</span> closed a deal with <span class="font-bold">CloudScale Inc.</span>
+</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] text-slate-400">2 mins ago</span>
+<span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+<span class="text-[11px] font-bold text-blue-600">$12,400</span>
+</div>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex gap-4">
+<div class="relative">
+<div class="w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden flex-shrink-0">
+<img alt="James Chen" data-alt="A young Asian male professional wearing a navy blue button-down shirt and glasses. He is looking at a computer screen off-camera with a focused expression. The background shows a collaborative co-working space with minimalist design and warm ambient lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS_5WDJeF4m808Tro6S5pRQ2nesdSKaMwpn1hPDa_0djtqwPlljkQNzc7tymU_vI8A3t-Y3kWiz7zkaF_qO4h89K9acRSx-1D5cUYoqHpGnj8TdReJQ-g5cogwHvajZshCwFFr2EVc2lRdMezvXsEujyCDI_rtGb0TMcCxzNtI_nxnLP-8r7cIafHLmkdiXZ2qhqICatzGJYK0wD7864UFZoOGvBL-fePAs67orlzBm63iaAUMmHHAungS0l2vpuH-V2syesAjpYFg"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-on-surface">
+<span class="font-bold">James Chen</span> started a new talk with <span class="font-bold">Vertex Systems</span>
+</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] text-slate-400">14 mins ago</span>
+<span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+<span class="text-[11px] font-bold text-slate-500">Sales Intro</span>
+</div>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex gap-4">
+<div class="relative">
+<div class="w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden flex-shrink-0">
+<img alt="Elena Rodriguez" data-alt="An African American female executive with a confident posture, wearing a sleek white blazer. She is standing in a minimalist modern boardroom with neutral tones and large windows. The lighting is soft and professional, capturing a visionary and determined mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUDDqZ_BVjzT2j_e8zD1Zfkv5irFn-cPKRc4cNF1AAgiOQ4ckxBK6s6wQ5AiWwQGA-5n0J2V8em8DIC6p-Ie9TP3RjJmXJdvREgkJJVXsq9HiYg4zUC687S_nXmwvL0o0wHb_PAfZ9YbvKurFSzHN-ft2j9I6szMJPyTRHCAyGPtfwVFVI5ExM1_Wi4EYzjqdPq2OKsYi8T3eyBz140l3v2_IzAFpNZbzAUstt1GYDjCYUUJEtDpu4rOkvxlUFXTT7rityHJSFoJ_c"/>
+</div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-on-surface">
+<span class="font-bold">Elena Rodriguez</span> shared a performance report
+                            </p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] text-slate-400">1 hour ago</span>
+<span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+<div class="flex items-center gap-1 bg-slate-50 border border-slate-100 rounded px-1.5 py-0.5">
+<span class="material-symbols-outlined text-[12px] text-slate-400" data-icon="description">description</span>
+<span class="text-[10px] text-slate-500 font-bold">Q4_Insights.pdf</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Activity Item 4 -->
+<div class="flex gap-4">
+<div class="relative">
+<div class="w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden flex-shrink-0">
+<img alt="Marcus Wright" data-alt="A middle-aged Caucasian male with a beard and a friendly smile, wearing a casual blue polo shirt. He is outdoors in a bright, modern corporate campus plaza with greenery in the background. The scene is full of natural light and has a warm, inviting feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP6JxVig2FSYXJCURe5rwf9AyEzFGUUGfex6FU83MT7yJLAd8w3195qq-eDGSMJtrH8ntTUgXjDgaGaFRE0ATG0uijfKS6qjnfkFF9nNX5FnPlpPmbYlbggZ-ER_-2ndoxSKnbCLbM4YcwHIWSfE1h_LfhQB79GNb37R-LoTyXXQoz-yJNYb8ZoF4ZN_AIxeAh9M7XM7UI90dGyZayKCBeWEHYDNoEx7xBWqNOrkeynETUOID5Dpv9lDYAHhAieux112RjEMhrLqJN"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-on-surface">
+<span class="font-bold">Marcus Wright</span> moved <span class="font-bold">Nova Core</span> to Negotiation
+                            </p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[11px] text-slate-400">2 hours ago</span>
+<span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+<span class="text-[11px] font-bold text-orange-600">80% Probability</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-100">
+<div class="bg-blue-50/50 rounded-2xl p-4 flex items-center justify-between">
+<div>
+<p class="text-[12px] font-bold text-blue-600">Live Team Status</p>
+<p class="text-[11px] text-slate-500">8 members active now</p>
+</div>
+<div class="flex -space-x-2">
+<div class="w-7 h-7 rounded-full border-2 border-white bg-slate-200"></div>
+<div class="w-7 h-7 rounded-full border-2 border-white bg-slate-300"></div>
+<div class="w-7 h-7 rounded-full border-2 border-white bg-slate-400"></div>
+<div class="w-7 h-7 rounded-full border-2 border-white bg-blue-600 flex items-center justify-center text-[10px] text-white font-bold">+5</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Performance Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+<!-- Top Performers Card -->
+<div class="glass-card p-6 rounded-3xl shadow-xl shadow-blue-500/5">
+<h3 class="font-label-md text-slate-900 mb-6 flex items-center justify-between">
+                    Top Performers
+                    <span class="material-symbols-outlined text-slate-400" data-icon="star">star</span>
+</h3>
+<div class="space-y-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">01</div>
+<span class="font-label-md text-on-surface">Sarah Miller</span>
+</div>
+<span class="font-bold text-blue-600">$84.2k</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs">02</div>
+<span class="font-label-md text-on-surface">Marcus Wright</span>
+</div>
+<span class="font-bold text-blue-600">$71.5k</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center font-bold text-xs">03</div>
+<span class="font-label-md text-on-surface">Elena Rodriguez</span>
+</div>
+<span class="font-bold text-blue-600">$68.9k</span>
+</div>
+</div>
+</div>
+<!-- Connection Health -->
+<div class="glass-card p-6 rounded-3xl shadow-xl shadow-blue-500/5 col-span-1 lg:col-span-2">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-label-md text-slate-900">Conversion Pipeline Health</h3>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span>
+<span class="text-[11px] font-bold text-slate-500">Inbound</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="text-[11px] font-bold text-slate-500">Outreach</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<div class="space-y-2">
+<p class="text-[11px] font-bold text-slate-400 uppercase">Lead</p>
+<div class="h-12 bg-slate-100 rounded-lg flex items-center justify-center font-bold text-slate-600">420</div>
+</div>
+<div class="space-y-2">
+<p class="text-[11px] font-bold text-slate-400 uppercase">Meeting</p>
+<div class="h-12 bg-blue-100 rounded-lg flex items-center justify-center font-bold text-blue-600">124</div>
+</div>
+<div class="space-y-2">
+<p class="text-[11px] font-bold text-slate-400 uppercase">Offer</p>
+<div class="h-12 bg-blue-200 rounded-lg flex items-center justify-center font-bold text-blue-700">56</div>
+</div>
+<div class="space-y-2">
+<p class="text-[11px] font-bold text-slate-400 uppercase">Closed</p>
+<div class="h-12 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white">19</div>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-2 text-xs font-medium text-slate-500">
+<span class="material-symbols-outlined text-[16px] text-emerald-500" data-icon="info">info</span>
+                    Closing rate is up 4.2% compared to last week. Keep focusing on the 'Offer' stage follow-ups.
+                </div>
+</div>
+</div>
+</main>
+</body></html>

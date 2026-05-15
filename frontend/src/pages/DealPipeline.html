@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Executive Ledger - Deal Pipeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline-variant": "#c6c6cd",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#d5e3fd",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "inverse-primary": "#bec6e0",
+                        "error-container": "#ffdad6",
+                        "outline": "#76777d",
+                        "on-background": "#191c1e",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "primary-fixed": "#dae2fd",
+                        "surface-container": "#eceef0",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "secondary-container": "#d5e3fd",
+                        "secondary": "#515f74",
+                        "on-tertiary-fixed": "#07006c",
+                        "on-tertiary-container": "#7073ff",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-container": "#07006c",
+                        "surface-tint": "#565e74",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed": "#e1e0ff",
+                        "surface-dim": "#d8dadc",
+                        "on-surface-variant": "#45464d",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "error": "#ba1a1a",
+                        "primary-container": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "background": "#f7f9fb",
+                        "primary": "#000000",
+                        "on-secondary-container": "#57657b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "24px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "margin-page": "40px",
+                        "unit": "8px",
+                        "container-padding": "32px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Manrope"],
+                        "h2": ["Manrope"],
+                        "data-tabular": ["Manrope"],
+                        "h3": ["Manrope"],
+                        "body-sm": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "label-caps": ["Manrope"],
+                        "body-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "data-tabular": ["14px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "h3": ["24px", {"lineHeight": "1.3", "letterSpacing": "0em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.08em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .prestige-shadow {
+            box-shadow: 0 10px 30px -15px rgba(15, 23, 42, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen">
+<!-- Top Navigation Anchor (As defined in JSON) -->
+<header class="bg-slate-50/80 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200">
+<div class="flex justify-between items-center w-full px-10 h-16 max-w-[1440px] mx-auto">
+<div class="text-lg font-bold tracking-tighter text-slate-900 uppercase font-h2">Executive Ledger</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-900 border-b-2 border-slate-900 pb-1 font-semibold font-body-sm" href="#">Deals</a>
+<a class="text-slate-500 font-medium font-body-sm hover:text-slate-900 transition-colors duration-200" href="#">Accounts</a>
+<a class="text-slate-500 font-medium font-body-sm hover:text-slate-900 transition-colors duration-200" href="#">Reports</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-500 hover:text-slate-900">notifications</button>
+<button class="material-symbols-outlined text-slate-500 hover:text-slate-900">settings</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-slate-200">
+<img alt="Executive User Avatar" data-alt="A professional headshot of a middle-aged male executive with a focused and confident expression. He is wearing a tailored charcoal suit and a crisp white shirt. The background is a softly blurred office setting with warm, ambient lighting that suggests a high-end corporate environment. The image uses a clean, high-contrast style that aligns with a premium minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARuNW1C8nViGxo592dEHZmwmmB-kJ4oP68ozM7fEhf1ySRaj3YWjOmorfBnEBOC_xZUWCDkb-WCMwgNBhot2foGj-tM1LXWuy0aEw4WjZ6wQkJHeybQ5yYqUTkvZ2f2e5B5rS_vBBCpzbYueq46U9yEpICbwFV7wktGOrH9quIV22qQz7C-sTi9LNKImWMoRGd8TTFyoFra_SQgr2p0v329_JpHBQaJUyixVi-M89EfSJ4Yg0kZcwQP8QgO1Jf7V4hby2F_MkkdxM"/>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-caps text-[10px] uppercase tracking-widest hover:opacity-90 transition-all">New Entry</button>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-margin-page py-stack-lg">
+<!-- Dashboard Header -->
+<div class="flex justify-between items-end mb-10">
+<div>
+<h1 class="font-h2 text-h2 text-primary tracking-tight">Deal Pipeline</h1>
+<p class="font-body-md text-on-primary-container mt-1">Current conversion health and active deals</p>
+</div>
+<div class="flex gap-stack-sm">
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 border border-outline-variant rounded shadow-sm">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span class="font-label-caps text-xs">Filter by Quarter</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 border border-outline-variant rounded shadow-sm">
+<span class="material-symbols-outlined text-sm">download</span>
+<span class="font-label-caps text-xs">Export Ledger</span>
+</div>
+</div>
+</div>
+<!-- Kanban Board -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter items-start">
+<!-- Column: Lead -->
+<div class="flex flex-col gap-stack-md">
+<div class="flex justify-between items-center pb-2 border-b-2 border-slate-900/10">
+<span class="font-label-caps text-primary tracking-widest uppercase">Lead</span>
+<span class="font-data-tabular bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-xs">08</span>
+</div>
+<div class="flex flex-col gap-stack-md">
+<!-- Deal Card 1 -->
+<div class="bg-surface-container-lowest border border-slate-200 p-stack-md rounded prestige-shadow hover:border-slate-400 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-[10px] text-slate-400 uppercase tracking-tighter">REF: #L-9022</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-slate-900 transition-colors">more_horiz</span>
+</div>
+<h3 class="font-h3 text-lg text-primary mb-1">Astra Venture Capital</h3>
+<p class="font-data-tabular text-slate-900 font-bold text-xl mb-4">$450,000</p>
+<div class="h-[1px] w-full bg-slate-100 mb-4"></div>
+<div class="flex justify-between items-center">
+<div class="flex -space-x-2">
+<img class="h-7 w-7 rounded-full ring-2 ring-white" data-alt="A professional sales representative portrait, a woman with a confident smile, wearing business attire. Soft natural lighting in a contemporary studio setting with a clean, light-colored background. High-resolution digital photography maintaining the executive aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoXlXplNIkQr9pK_NN5i1sai16Fqz5HNkUlUXfpWtLyoTQP53OtAgA7W9rgxuQZNL7Z99XkMxNlodJvXHigZX6VOxEjiIAjeA90Mwqu2x_4HChqXRrBwHzTpwHkFzsMeZu92gpc4uyuGhecKm1N90IbOWp49JC1gpk_4nV-FvU_wDAembP7c4jso78MFHfNRgVQ3Cz4IwA5dsSSQbhMXyVORFyuwHiH7JQq2MdKvzDeiiVaLlJ9auwlbV8mbOgV1RXy1m5gmwx6gI"/>
+</div>
+<span class="bg-blue-50 text-blue-700 font-label-caps text-[9px] px-2 py-1 rounded-sm uppercase tracking-widest">Early Stage</span>
+</div>
+</div>
+<!-- Deal Card 2 -->
+<div class="bg-surface-container-lowest border border-slate-200 p-stack-md rounded prestige-shadow hover:border-slate-400 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-[10px] text-slate-400 uppercase tracking-tighter">REF: #L-9104</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-slate-900 transition-colors">more_horiz</span>
+</div>
+<h3 class="font-h3 text-lg text-primary mb-1">Kinetic Logistics Ltd</h3>
+<p class="font-data-tabular text-slate-900 font-bold text-xl mb-4">$125,500</p>
+<div class="h-[1px] w-full bg-slate-100 mb-4"></div>
+<div class="flex justify-between items-center">
+<div class="flex -space-x-2">
+<img class="h-7 w-7 rounded-full ring-2 ring-white" data-alt="A portrait of a male sales associate in a light blue oxford shirt, conveying professional approachability. The image is bright and clean with a minimalist grey background, reflecting the premium corporate ledger style of the application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPvloTNTDTnu94SaOKx_3n1gCBREFHEgkzt05cSeyz_l_9IYaCqzixISKcSv-1yIj-OTs_q9uaqlsRsUrVNPYw1KshCUqxePuvOKZGu9o1pj8AGn4ewBQGd_Co9VQLEZHhpqGulhKkE6u_hjEkjFMVY6-mSDU_SF_qyk6r_zPV2r7lOJsC7HzBJ2vfu4iy96YLqDT1K6YwY0HH7_TLS6HXQz6VO1lDCo9rJB8NmPiQUKdPOkoJ7o7eqwDJlruompPp9YYrCrdeLx4"/>
+</div>
+<span class="bg-slate-50 text-slate-500 font-label-caps text-[9px] px-2 py-1 rounded-sm uppercase tracking-widest">Cold</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Meeting -->
+<div class="flex flex-col gap-stack-md">
+<div class="flex justify-between items-center pb-2 border-b-2 border-slate-900/10">
+<span class="font-label-caps text-primary tracking-widest uppercase">Meeting</span>
+<span class="font-data-tabular bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-xs">03</span>
+</div>
+<div class="flex flex-col gap-stack-md">
+<!-- Deal Card 3 -->
+<div class="bg-surface-container-lowest border border-slate-200 p-stack-md rounded prestige-shadow hover:border-slate-400 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-[10px] text-slate-400 uppercase tracking-tighter">REF: #M-4421</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-slate-900 transition-colors">more_horiz</span>
+</div>
+<h3 class="font-h3 text-lg text-primary mb-1">Oasis Real Estate</h3>
+<p class="font-data-tabular text-slate-900 font-bold text-xl mb-4">$2,100,000</p>
+<div class="w-full bg-slate-100 h-1 mb-4 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-blue-500 to-indigo-600 h-full w-[65%]"></div>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex -space-x-2">
+<img class="h-7 w-7 rounded-full ring-2 ring-white" data-alt="A high-quality studio portrait of a senior account manager. He is wearing a dark navy blazer over a white polo, presenting a semi-formal, professional look. The background is a clean white, perfectly integrated into the high-density executive dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi5AZnRPIZzIw4c3mASIdfituQD5_ad9FgKQNOqllwaWNqt3sSEBiAL7PBFZEKAK3_COjMhCdnQ4CIkoginfg-jPiURSrHBoZoFD0r4RNwv3S_Z1QV-F1ozIvIezMF7rcrLYF4bpdTcdsbJw26z3HDPjncPqBkzqA822yduiIjRgjx2s3aoa_B32vOHsJfmkTwJ4TrJYxrEkUHCX13YegyLdaASSojKc5MmQNa7xblKpK2D3RUaa7zrSvc0OtBZ51Cr1GC0u4v0FI"/>
+</div>
+<span class="bg-amber-50 text-amber-700 font-label-caps text-[9px] px-2 py-1 rounded-sm uppercase tracking-widest">Follow up</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Offer -->
+<div class="flex flex-col gap-stack-md">
+<div class="flex justify-between items-center pb-2 border-b-2 border-slate-900/10">
+<span class="font-label-caps text-primary tracking-widest uppercase">Offer</span>
+<span class="font-data-tabular bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-xs">05</span>
+</div>
+<div class="flex flex-col gap-stack-md">
+<!-- Deal Card 4 -->
+<div class="bg-surface-container-lowest border border-slate-200 p-stack-md rounded prestige-shadow hover:border-slate-400 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-[10px] text-slate-400 uppercase tracking-tighter">REF: #O-1192</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-slate-900 transition-colors">more_horiz</span>
+</div>
+<h3 class="font-h3 text-lg text-primary mb-1">Northstar Global</h3>
+<p class="font-data-tabular text-slate-900 font-bold text-xl mb-4">$890,000</p>
+<div class="h-[1px] w-full bg-slate-100 mb-4"></div>
+<div class="flex justify-between items-center">
+<div class="flex -space-x-2">
+<img class="h-7 w-7 rounded-full ring-2 ring-white" data-alt="A portrait of a professional woman in a dark executive suit. Her posture is confident and her expression is inviting yet professional. Set against a minimalist grey background with soft cinematic lighting that highlights her features clearly, maintaining a luxurious corporate feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu5BVyADqPFvG0B3A7r3d6HHjK2zZ9yNoh1XRLNfhD-tk-FK11BQr3qZ2v3VZxCmT1FfBhOV2R62g7hysVjz4Oow0F7CteuQsZe36TLipcvAprh29jWrERM_qqJ9sh4HzM1JscU4knyB0PBa5lCSSq9JSJvwaM2VXUXmMA5lCnnjv799pXyTc4wzAH6GjUTOvuB8jLxAwnC10Tzyx9JPBcdA358xM5OsmQ6pSsgfDY9dbJYluf3arJH4FoWhBSavwP6fcuWW_-ZiY"/>
+</div>
+<span class="bg-indigo-50 text-indigo-700 font-label-caps text-[9px] px-2 py-1 rounded-sm uppercase tracking-widest">Negotiating</span>
+</div>
+</div>
+<!-- Deal Card 5 -->
+<div class="bg-surface-container-lowest border border-slate-200 p-stack-md rounded prestige-shadow border-l-4 border-l-slate-900">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-[10px] text-slate-400 uppercase tracking-tighter">REF: #O-1205</span>
+<span class="material-symbols-outlined text-slate-300">verified</span>
+</div>
+<h3 class="font-h3 text-lg text-primary mb-1">Apex FinTech</h3>
+<p class="font-data-tabular text-slate-900 font-bold text-xl mb-4">$340,000</p>
+<div class="w-full bg-slate-100 h-1 mb-4 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-blue-500 to-indigo-600 h-full w-[90%]"></div>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex -space-x-2">
+<img class="h-7 w-7 rounded-full ring-2 ring-white" data-alt="Close up of a businessman in professional attire with a calm and confident expression. The lighting is soft and professional, emphasizing clarity and focus. The background is a blurred office window, creating a modern and premium corporate ambiance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb6lMKkLImpqlYKzlHscSC-ni2Q_k3EbXG-DtnHyKuqIAlyZnOY4XOYLE9mt5Vc-wo-nS8k93RtJmU2XIH4RFTWRqC8FQou1cKdVzM_BBX1hyRui0rGUFY1qGv0gJEKIiCiklSHwLjb60jjniVlnIcJvD6MoVQy99pvjEc-QJELkw-zynTZkso6aLRMk144kD835_s4dismbazMDcmzVuWYBW7jGfJWWpX5U_1dehu8euIj9ywQhA-omjJg740geUsDQDAzlu33cQ"/>
+</div>
+<span class="bg-green-50 text-green-700 font-label-caps text-[9px] px-2 py-1 rounded-sm uppercase tracking-widest">Final Review</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Closed -->
+<div class="flex flex-col gap-stack-md">
+<div class="flex justify-between items-center pb-2 border-b-2 border-slate-900/10">
+<span class="font-label-caps text-primary tracking-widest uppercase">Closed</span>
+<span class="font-data-tabular bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-xs">14</span>
+</div>
+<div class="flex flex-col gap-stack-md">
+<!-- Deal Card 6 -->
+<div class="bg-slate-50/50 border border-slate-200 p-stack-md rounded opacity-75 grayscale hover:grayscale-0 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-caps text-[10px] text-slate-400 uppercase tracking-tighter">REF: #C-0092</span>
+<span class="material-symbols-outlined text-green-600" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-h3 text-lg text-slate-500 mb-1">Silverstone Group</h3>
+<p class="font-data-tabular text-slate-400 font-bold text-xl mb-4">$56,000</p>
+<div class="h-[1px] w-full bg-slate-200 mb-4"></div>
+<div class="flex justify-between items-center">
+<div class="flex -space-x-2">
+<img class="h-7 w-7 rounded-full ring-2 ring-white" data-alt="A portrait of a confident female professional in her late 30s. She has a subtle smile and is wearing a cream-colored blazer. The background is a softly lit executive lounge, adding to the high-end, premium aesthetic of the dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdCTyRcOFQtp0gTLYUT11lgx05pgaW33BXVdMiqxqprYKrCMgmsfK3SCar1WWlaINpuP6mi6zGexfOYQf3lNnjoqLXDskMZE7JVQ1RjJLnHcoX2orIh62dopGqEyk667iHeV6yAxA8o11u3QLUDQD0QTJDGqQq5zIcSWJNb-E7Jrss7sDc9yzfE9caJ6FJiXNa5gJV74oC1AeoUijr394rWFiIG_NhpSV1lXzGc0ZVd73Sd28VLPsPRTrTk-3r2fwj74BQJaggjZ8"/>
+</div>
+<span class="bg-slate-200 text-slate-500 font-label-caps text-[9px] px-2 py-1 rounded-sm uppercase tracking-widest">Archived</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell (As defined in JSON) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-6 py-3 pb-safe bg-white border-t border-slate-200 z-50 shadow-[0_-4px_12px_rgba(15,23,42,0.04)]">
+<button class="flex flex-col items-center justify-center text-slate-900 bg-slate-100 rounded-md px-4 py-1">
+<span class="material-symbols-outlined" data-icon="view_kanban" style="font-variation-settings: 'FILL' 1;">view_kanban</span>
+<span class="font-manrope text-[11px] font-bold uppercase tracking-widest mt-1">Pipeline</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 hover:bg-slate-50">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-manrope text-[11px] font-bold uppercase tracking-widest mt-1">Contacts</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 hover:bg-slate-50">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-manrope text-[11px] font-bold uppercase tracking-widest mt-1">Ledger</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 hover:bg-slate-50">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-manrope text-[11px] font-bold uppercase tracking-widest mt-1">Analytics</span>
+</button>
+</nav>
+</body></html>
