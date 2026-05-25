@@ -100,7 +100,7 @@ const ActivityDetailsModal = ({ isOpen, onClose, clientName }) => {
                                                     <div className="text-sm font-medium text-slate-700 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm flex items-center gap-2">
                                                         <span className="material-symbols-outlined text-[16px] text-slate-400">schedule</span>
                                                         {act.createdAt 
-                                                            ? new Date(act.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) 
+                                                            ? new Date(act.createdAt + (act.createdAt.endsWith('Z') ? '' : 'Z')).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) 
                                                             : (act.timeSlot && act.timeSlot !== 'Anytime' ? act.timeSlot : 'Anytime')}
                                                     </div>
                                                 </div>
