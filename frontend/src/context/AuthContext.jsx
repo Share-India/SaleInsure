@@ -22,7 +22,10 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (username, password, rememberMe = false) => {
         try {
-            const res = await axios.post(`${API_BASE_URL}/api/auth/login`, { username, password });
+            const res = await axios.post(`${API_BASE_URL}/api/auth/login`, { 
+                username: username.trim(), 
+                password: password.trim() 
+            });
             const userData = res.data;
             
             if (rememberMe) {
