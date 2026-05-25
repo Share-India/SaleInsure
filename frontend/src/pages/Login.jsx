@@ -23,12 +23,12 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
-    const success = await login(username, password, rememberMe);
-    if (success) {
+    const result = await login(username, password, rememberMe);
+    if (result.success) {
       if (role === 'manager') navigate('/manager');
       else navigate('/sales');
     } else {
-      setError('Invalid credentials');
+      setError(result.message);
     }
   };
 

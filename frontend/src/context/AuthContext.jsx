@@ -32,10 +32,16 @@ export const AuthProvider = ({ children }) => {
             }
             
             setUser(userData);
-            return true;
+            return { success: true };
         } catch (error) {
             console.error('Login error', error);
-            return false;
+            if (!error.response) {
+                return { success: false, message: 'Network Error: Cannot connect to backend' };
+            }
+            if (error.response.status === 401) {
+                return { success: false, message: 'Invalid credentials' };
+            }
+            return { success: false, message: `Server error: ${error.response.status}` };
         }
     };
 
