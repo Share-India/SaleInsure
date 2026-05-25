@@ -11,7 +11,7 @@ const NEEDS_CATEGORIES = [
   }
 ];
 
-const LogActivityModal = ({ isOpen, stage, onClose, onSubmit, allDeals = [] }) => {
+const LogActivityModal = ({ isOpen, stage, onClose, onSubmit, allDeals = [], initialData = null }) => {
   const [formData, setFormData] = useState({
     clientName: '',
     notes: '',
@@ -37,6 +37,71 @@ const LogActivityModal = ({ isOpen, stage, onClose, onSubmit, allDeals = [] }) =
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
+  
+  useEffect(() => {
+    if (initialData && isOpen) {
+      let parsedPd = {};
+      let parsedFd = {};
+      let parsedMeetings = [];
+      let parsedInterests = ['', '', ''];
+      let parsedNeeds = [];
+      let category = '';
+
+      try { if (initialData.personalDetails) parsedPd = JSON.parse(initialData.personalDetails); } catch(e){}
+      try { if (initialData.familyDetails) parsedFd = JSON.parse(initialData.familyDetails); } catch(e){}
+      try { if (initialData.meetingsData) parsedMeetings = JSON.parse(initialData.meetingsData); } catch(e){}
+      
+      if (initialData.personalInterests) {
+        const parts = initialData.personalInterests.split(',').map(s => s.trim());
+        parsedInterests = [parts[0] || '', parts[1] || '', parts[2] || ''];
+      }
+
+      if (initialData.needsIdentifiedList) {
+        let str = initialData.needsIdentifiedList;
+        if (str.startsWith('[')) {
+          const closeIdx = str.indexOf(']');
+          if (closeIdx !== -1) {
+            category = str.substring(1, closeIdx);
+            str = str.substring(closeIdx + 1).trim();
+          }
+        }
+        parsedNeeds = str.split(',').map(s => s.trim()).filter(Boolean);
+      }
+
+      setSelectedCategory(category);
+      setFormData({
+        clientName: initialData.clientName || '',
+        notes: initialData.remarks || '',
+        contactNumber: initialData.contactNumber || '',
+        productPitched: initialData.productPitched || '',
+        productTerm: initialData.productTerm || '',
+        salaryPercentage: initialData.salaryPercentage || '',
+        modeOfConnection: initialData.modeOfConnection || 'personally',
+        pdAge: parsedPd.age || '',
+        pdOccupation: parsedPd.occupation || '',
+        pdIncome: parsedPd.income || '',
+        pdMaritalStatus: parsedPd.maritalStatus || 'Single',
+        fdDependents: parsedFd.dependents || '0',
+        fdSpouseOccupation: parsedFd.spouseOccupation || '',
+        fdChildrenAges: parsedFd.childrenAges || '',
+        personalInterests: parsedInterests,
+        needsIdentifiedList: parsedNeeds,
+        productName: initialData.productName || '',
+        premiumAmount: initialData.premiumAmount || '',
+        status: initialData.status || 'WON',
+        meetingsData: parsedMeetings
+      });
+    } else if (!isOpen) {
+      // Reset when closed
+      setFormData({
+        clientName: '', notes: '', contactNumber: '', productPitched: '', productTerm: '', salaryPercentage: '',
+        modeOfConnection: 'personally', pdAge: '', pdOccupation: '', pdIncome: '', pdMaritalStatus: 'Single',
+        fdDependents: '0', fdSpouseOccupation: '', fdChildrenAges: '', personalInterests: ['', '', ''],
+        needsIdentifiedList: [], productName: '', premiumAmount: '', status: 'WON', meetingsData: []
+      });
+      setSelectedCategory('');
+    }
+  }, [initialData, isOpen]);
   
   const pastClients = Array.from(new Set(allDeals.map(d => d.clientName).filter(Boolean))).map(name => {
      const dealsForClient = allDeals.filter(d => d.clientName === name);
@@ -117,7 +182,7 @@ const LogActivityModal = ({ isOpen, stage, onClose, onSubmit, allDeals = [] }) =
       meetingsData: JSON.stringify(formData.meetingsData),
       remarks: formData.notes
     };
-    onSubmit(stage, payload);
+    onSubmit(stage, payload, initialData?.id);
   };
 
   const getTitle = () => {
@@ -125,8 +190,11 @@ const LogActivityModal = ({ isOpen, stage, onClose, onSubmit, allDeals = [] }) =
       case 'CONVERSATION': return 'Log Conversation';
       case 'CONNECTION': return 'Log Connection';
       case 'CLOSURE': return 'Log Closure';
-      default: return 'Log Activity';
     }
+  };
+
+  const getButtonText = () => {
+    return initialData ? 'Update Activity' : 'Save Activity';
   };
 
   return (
@@ -441,7 +509,7 @@ const LogActivityModal = ({ isOpen, stage, onClose, onSubmit, allDeals = [] }) =
             form="activity-form"
             className="px-6 py-2 rounded-xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30 hover:bg-blue-700 active:scale-95 transition-all"
           >
-            Save Activity
+            {getButtonText()}
           </button>
         </div>
       </div>

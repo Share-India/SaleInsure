@@ -82,4 +82,45 @@ public class ActivityController {
         List<Activity> activities = activityRepository.findByClientNameOrderByActivityDateAscIdAsc(clientName);
         return ResponseEntity.ok(activities);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateActivity(@PathVariable Long id, @RequestBody ActivityRequest request) {
+        Activity activity = activityRepository.findById(id).orElse(null);
+        if (activity == null) return ResponseEntity.badRequest().body("Activity not found");
+
+        // Update basic fields if provided
+        if (request.getActivityDate() != null) activity.setActivityDate(request.getActivityDate());
+        if (request.getTimeSlot() != null) activity.setTimeSlot(request.getTimeSlot());
+        if (request.getClientName() != null) activity.setClientName(request.getClientName());
+
+        // Map fields based on stage
+        if (activity.getStage() == ActivityStage.CONVERSATION) {
+            activity.setContactNumber(request.getContactNumber());
+            activity.setModeOfConnection(request.getModeOfConnection());
+            activity.setProductTerm(request.getProductTerm());
+            activity.setSalaryPercentage(request.getSalaryPercentage());
+            activity.setMeetingsData(request.getMeetingsData());
+            activity.setRemarks(request.getRemarks());
+        } else if (activity.getStage() == ActivityStage.CONNECTION) {
+            activity.setProductPitched(request.getProductPitched());
+            activity.setModeOfConnection(request.getModeOfConnection());
+            activity.setPersonalDetails(request.getPersonalDetails());
+            activity.setFamilyDetails(request.getFamilyDetails());
+            activity.setPersonalInterests(request.getPersonalInterests());
+            activity.setNeedsIdentifiedList(request.getNeedsIdentifiedList());
+            activity.setNeedIdentified(request.getNeedIdentified());
+            activity.setRequirementDetails(request.getRequirementDetails());
+            activity.setExpectedClosureDate(request.getExpectedClosureDate());
+            activity.setFollowUpDate(request.getFollowUpDate());
+            activity.setRemarks(request.getRemarks());
+        } else if (activity.getStage() == ActivityStage.CLOSURE) {
+            activity.setProductName(request.getProductName());
+            activity.setPremiumAmount(request.getPremiumAmount());
+            activity.setClosureDate(request.getClosureDate());
+            activity.setStatus(request.getStatus());
+        }
+
+        activityRepository.save(activity);
+        return ResponseEntity.ok(new MessageResponse("Activity updated successfully!"));
+    }
 }
